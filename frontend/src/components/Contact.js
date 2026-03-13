@@ -5,7 +5,7 @@ import './Contact.css';
 // 1. Crea cuenta gratis en https://formspree.io
 // 2. Crea un nuevo form y copia el ID
 // 3. Reemplaza YOUR_FORM_ID con tu ID (ej: "xpwzjrqv")
-const FORMSPREE_URL = 'https://formspree.io/f/YOUR_FORM_ID';
+const FORMSPREE_URL = 'https://formspree.io/f/xpqyrona';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
