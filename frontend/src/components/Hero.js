@@ -32,6 +32,14 @@ const Hero = () => {
           />
         </div>
       </div>
+
+      <div
+        className="hero-scroll"
+        onClick={() => document.getElementById('about').scrollIntoView({ behavior: 'smooth' })}
+      >
+        <span className="scroll-label">scroll</span>
+        <div className="scroll-chevron"></div>
+      </div>
     </section>
   );
 };

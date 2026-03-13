@@ -1,68 +1,106 @@
 .skills {
-  background: var(--bg-primary);
+  background: var(--bg-secondary);
 }
 
 .skills-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
 }
 
 .skill-category {
-  background: var(--bg-secondary);
+  background: var(--bg-primary);
   padding: 1.8rem;
   border-radius: 12px;
   border: 1px solid var(--border-color);
 }
 
 .category-title {
-  font-size: 1.1rem;
+  font-size: 0.8rem;
   font-weight: 600;
-  color: var(--text-primary);
-  margin-bottom: 1.2rem;
-  padding-bottom: 0.8rem;
-  border-bottom: 1px solid var(--border-color);
-}
-
-.skills-list {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.skill-item {
-  width: 100%;
-}
-
-.skill-info {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 0.5rem;
-}
-
-.skill-name {
-  font-weight: 500;
-  color: var(--text-primary);
-  font-size: 0.95rem;
-}
-
-.skill-percentage {
   color: var(--text-secondary);
-  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  margin-bottom: 1.2rem;
 }
 
-.skill-bar {
-  height: 6px;
-  background: var(--border-color);
-  border-radius: 3px;
-  overflow: hidden;
+.skills-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
 }
 
-.skill-progress {
-  height: 100%;
+/* Chips con animación de entrada */
+.skill-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.45rem 0.9rem;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  background: var(--bg-secondary);
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.4s ease var(--delay, 0ms),
+              transform 0.4s ease var(--delay, 0ms);
+}
+
+.skills-container.visible .skill-chip {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Punto de nivel */
+.chip-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.level-avanzado .chip-dot {
   background: var(--text-primary);
-  border-radius: 3px;
-  transition: width 1s ease-out;
+}
+
+.level-intermedio .chip-dot {
+  background: transparent;
+  border: 1.5px solid var(--text-secondary);
+}
+
+/* Leyenda */
+.skills-legend {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  margin-top: 0.5rem;
+}
+
+.legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+.legend-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.legend-dot.avanzado {
+  background: var(--text-primary);
+}
+
+.legend-dot.intermedio {
+  background: transparent;
+  border: 1.5px solid var(--text-secondary);
 }
 
 @media (max-width: 768px) {

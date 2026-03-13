@@ -1,6 +1,12 @@
 import React, { useState } from 'react';
 import './Contact.css';
 
+// Para activar el formulario:
+// 1. Crea cuenta gratis en https://formspree.io
+// 2. Crea un nuevo form y copia el ID
+// 3. Reemplaza YOUR_FORM_ID con tu ID (ej: "xpwzjrqv")
+const FORMSPREE_URL = 'https://formspree.io/f/YOUR_FORM_ID';
+
 const Contact = () => {
   const [formData, setFormData] = useState({
     name: '',
@@ -23,18 +29,21 @@ const Contact = () => {
     setIsSubmitting(true);
 
     try {
-      // Aquí iría la llamada real a tu API backend
-      // const response = await fetch('http://localhost:3000/api/v1/contact', {
-      //   method: 'POST',
-      //   headers: { 'Content-Type': 'application/json' },
-      //   body: JSON.stringify(formData)
-      // });
+      const response = await fetch(FORMSPREE_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
 
-      // Simulación de envío
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-
-      setSubmitStatus('success');
-      setFormData({ name: '', email: '', subject: '', message: '' });
+      if (response.ok) {
+        setSubmitStatus('success');
+        setFormData({ name: '', email: '', subject: '', message: '' });
+      } else {
+        setSubmitStatus('error');
+      }
     } catch (error) {
       setSubmitStatus('error');
     } finally {
